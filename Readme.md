@@ -50,7 +50,8 @@ renders
 considering the same setup as above, now we will use a layout file
 
 templates\layout.php:
-
+    
+    <?php use SectionedView\Section ?>
     <html>
     <head>
        <title>Hello</title>
@@ -62,7 +63,8 @@ templates\layout.php:
 
 
 templates\hello.php:
-
+    
+    <?php use SectionedView\Section ?>
     <?php Section::layout('layout.php') /* path relative to specified template_path in SectionedView */ ?>
     <?php Section::start('content') ?>
        Hello, <?= $name ?>!
