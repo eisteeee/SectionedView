@@ -1,0 +1,31 @@
+{
+   "name": "eisteee/SectionedView",
+   "description": "layout inheritance and sections in php's native templates",
+   "keywords": ["sections", "views", "layout"],
+   "homepage": "http://github.com/eisteeee/SectionedView",
+   "license": "MIT",
+   "authors": [
+      {
+         "name": "Felix Breitweiser",
+         "email": "felix.breitweiser@gmail.com",
+         "role": "Developer"
+      }
+   ],
+   "support": {
+      "source": "http://github.com/eisteeee/SectionedView",
+      "issues": "http://github.com/eisteeee/SectionedView/issues"
+   },
+   "require": {
+      "php": ">=5.3.0"
+   },
+
+   "require-dev": {
+      "phpunit/phpunit": "~4.5.0"
+   },
+
+   "autoload": {
+      "psr-4": {
+         "SectionedView\\": "src/"
+      }
+   }
+}
