@@ -21,4 +21,20 @@ class SectionedViewTest extends PHPUnit_Framework_TestCase
         $this->view->render('section.php', array('key' => 'test'));
     }
 
+    public function testRenderViewWithOverridenSections()
+    {
+        $this->expectOutputString('layout test override');
+        $this->view->render('override.php', array('key' => 'test'));   
+    }
+
+    /**
+     * @expectedException SectionedView\ViewException
+     * @expectedExceptionMessage missing section end
+     */
+    public function testThrowsWhenSectionNotClosed()
+    {
+        $this->view->echo = false;
+        $this->view->render('missing_close.php', array('key' => 'test'));   
+    }
+
 }
