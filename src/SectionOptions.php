@@ -17,18 +17,18 @@ class SectionOptions
    {
       if($this->filter !== null)
       {
-         $contents = $this->apply_filter($contents, $data);
+         $contents = $this->applyFilter($contents, $data);
       }
       return $contents;
    }
 
-   private function aplly_filter($contents, $data)
+   private function applyFilter($contents, $data)
    {
       if(is_callable($this->filter))
       {
          $contents = call_user_func_array(
             $this->filter,
-            [$contents, $this->data]);
+            [$contents, $data]);
       }
       else if(is_array($this->filter) || $this->filter instanceof Traversable) 
       {
@@ -40,7 +40,7 @@ class SectionOptions
             }
             $contents = call_user_func_array(
                $filter,
-               [$contents, $this->data]);
+               [$contents, $data]);
          }
          $contents = $contents;
       }
