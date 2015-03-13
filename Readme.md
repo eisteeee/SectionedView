@@ -16,12 +16,12 @@ I recommend you install SectionedView via Composer:
 composer.json:
 
     "require": {
-      "eisteee/SectionedView": "~1.0"
+      "eisteee/sectioned-view": "~1.0"
     }
 
 or using the command line
 
-    composer require eisteee/SectionedView
+    composer require eisteee/sectioned-view
 
 
 ###Requirements
@@ -45,13 +45,19 @@ renders
 
     Hello, World!
 
+in order to return the rendered contents instead of printing them to output directly use:
+
+    $template_path = __DIR__ . "/templates"; //absolute path to your template directory
+    $view = new \SectionedView\View($template_path, array('echo' => 'false'));
+    $view->render("hello.php", array('name' => 'World'));
+
 ###Using layouts & sections
 
 considering the same setup as above, now we will use a layout file
 
 templates\layout.php:
     
-    <?php use SectionedView\Section ?>
+    <?php use SectionedView\Section; ?>
     <html>
     <head>
        <title>Hello</title>
@@ -64,8 +70,10 @@ templates\layout.php:
 
 templates\hello.php:
     
-    <?php use SectionedView\Section ?>
+    <?php use SectionedView\Section; ?>
     <?php Section::layout('layout.php') /* path relative to specified template_path in SectionedView */ ?>
+    <!-- the moment you specify a layout file any text that is not within a section gets ommited -->
+    <!-- you can only specify one layout per file -->
     <?php Section::start('content') ?>
        Hello, <?= $name ?>!
     <?php Section::end() ?>
