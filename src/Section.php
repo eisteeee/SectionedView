@@ -58,6 +58,13 @@ class Section
       $this->end(true);
    }
 
+   public function partial($name)
+   {
+      $file = $this->template_base . DIRECTORY_SEPARATOR .
+         'partials' . DIRECTORY_SEPARATOR . $name;
+      require $file;
+   }
+
    public function layout($layout)
    {
       if($this->layout !== null) 
