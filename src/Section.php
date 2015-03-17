@@ -58,10 +58,11 @@ class Section
       $this->end(true);
    }
 
-   public function partial($name)
+   public function partial($name, $data)
    {
       $file = $this->template_base . DIRECTORY_SEPARATOR .
          'partials' . DIRECTORY_SEPARATOR . $name;
+      extract($data);
       require $file;
    }
 
